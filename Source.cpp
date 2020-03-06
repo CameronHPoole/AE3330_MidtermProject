@@ -1,24 +1,20 @@
 #include <iostream>
+#include <math.h>
+#include "Header.h"
 using namespace std;
 
 // Determine planet centered position vector
 double* planetcentric(double* vec) {
 	double pcp[3] = { vec[0], vec[1], vec[2] };
 	double Re = 6371.0088;//Re is the radius of earth, in this case we use the mean radius of earth in km
-	//cout << pcp[0];
 	pcp[2] = Re + pcp[2];
 	return pcp;
 }
 
 int main() {
 	// First we define the range and range rate measurements in the topocentric horizon coordinate system, lat and lon on radar station
-	double rangeXh;
-	double rangeYh;
-	double rangeZh;
-
-	double rateXh;
-	double rateYh;
-	double rateZh;
+	double rangeXh, rangeYh, rangeZh;
+	double rateXh, rateYh, rateZh;
 
 	double lat; // latitude of radar site
 	double lambdaE; // This is the geographic longitude of the radar site
@@ -71,5 +67,14 @@ int main() {
 	
 	double theta = thetaGnot + (1.002738 * 360 * days) + lambdaE;
 	double d[3][3]; // this is the D matrix that transforms Earth centered inertial frame to topocentric horizon frame so we need the inverse since we know the topocentric horizon frame
-
+	double r11 = sind(lat);
+	/*double r12 = ;
+	double r13 = ;
+	double r21 = ;
+	double r22 = ;
+	double r23 = 0;
+	double r31 = ;
+	double r32 = ;
+	double r33 = ;
+	d[3][3] = ;*/
 }
